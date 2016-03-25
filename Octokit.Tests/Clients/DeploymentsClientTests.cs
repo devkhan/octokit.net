@@ -10,11 +10,15 @@ public class DeploymentsClientTests
     public class TheGetAllMethod
     {
         private const string name = "name";
+<<<<<<< 489130dd90472985c1ad0b8c60ce9ae859e5a801
 <<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
         private const string owner = "owner";
 =======
         private const string owner = "name";
 >>>>>>> Small fixes in DeploymentsClientTests
+=======
+        private const string owner = "owner";
+>>>>>>> Fix for prev commit.
 
         [Fact]
         public async Task EnsuresNonNullArguments()
