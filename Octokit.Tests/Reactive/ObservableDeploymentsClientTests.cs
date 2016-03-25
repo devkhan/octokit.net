@@ -30,15 +30,9 @@ namespace Octokit.Tests.Reactive
             [Fact]
             public void EnsuresNonNullArguments()
             {
-<<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 Assert.Throws<ArgumentNullException>(() => _client.GetAll(null, name));
                 Assert.Throws<ArgumentNullException>(() => _client.GetAll(owner, null));
                 Assert.Throws<ArgumentNullException>(() => _client.GetAll(owner, name, null));
-=======
-                Assert.Throws<ArgumentNullException>(() => _client.GetAll(null, "repo"));
-                Assert.Throws<ArgumentNullException>(() => _client.GetAll("owner", null));
-                Assert.Throws<ArgumentNullException>(() => _client.GetAll("owner", "repo", null));
->>>>>>> ObservableDeploymentsClientTests were updated
             }
 
             [Fact]

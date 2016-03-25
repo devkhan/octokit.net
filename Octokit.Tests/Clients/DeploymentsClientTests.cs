@@ -10,13 +10,18 @@ public class DeploymentsClientTests
     public class TheGetAllMethod
     {
         private const string name = "name";
+<<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
         private const string owner = "owner";
+=======
+        private const string owner = "name";
+>>>>>>> Small fixes in DeploymentsClientTests
 
         [Fact]
         public async Task EnsuresNonNullArguments()
         {
             var client = new DeploymentsClient(Substitute.For<IApiConnection>());
 
+<<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
             await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetAll(null, name));
             await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetAll(owner, null));
@@ -26,6 +31,11 @@ public class DeploymentsClientTests
             await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetAll("owner", null));
             await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetAll("owner", "name", null));
 >>>>>>> DeploymentsClientTests were updated
+=======
+            await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetAll(null, name));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetAll(owner, null));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetAll(owner, name, null));
+>>>>>>> Small fixes in DeploymentsClientTests
         }
 
         [Fact]
@@ -56,6 +66,7 @@ public class DeploymentsClientTests
         {
             var connection = Substitute.For<IApiConnection>();
             var client = new DeploymentsClient(connection);
+<<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
             var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
 
@@ -66,8 +77,11 @@ public class DeploymentsClientTests
 
 =======
             var expectedUrl = ApiUrls.Deployments("owner", "name");
+=======
+            var expectedUrl = ApiUrls.Deployments(owner, name);
+>>>>>>> Small fixes in DeploymentsClientTests
 
-            client.GetAll("owner", "name");
+            client.GetAll(owner, name);
             connection.Received(1).GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), Args.ApiOptions);
         }
 
@@ -77,11 +91,15 @@ public class DeploymentsClientTests
         {
             var connection = Substitute.For<IApiConnection>();
             var client = new DeploymentsClient(connection);
+<<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
             var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
 =======
             var expectedUrl = ApiUrls.Deployments("owner", "name");
 >>>>>>> DeploymentsClientTests were updated
+=======
+            var expectedUrl = ApiUrls.Deployments(owner, name);
+>>>>>>> Small fixes in DeploymentsClientTests
 
             var options = new ApiOptions
             {
@@ -90,12 +108,16 @@ public class DeploymentsClientTests
                 StartPage = 1
             };
 
+<<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
             client.GetAll(owner, name, options);
             connection.Received(1)
                 .GetAll<Deployment>(Arg.Is<Uri>(u => u.ToString() == expectedUrl), options);
 =======
             client.GetAll("owner", "name");
+=======
+            client.GetAll(owner, name);
+>>>>>>> Small fixes in DeploymentsClientTests
             connection.Received(1).GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), options);
 >>>>>>> DeploymentsClientTests were updated
         }
