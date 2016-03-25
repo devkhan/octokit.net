@@ -15,8 +15,11 @@ namespace Octokit.Tests.Reactive
         {
             private readonly IGitHubClient _githubClient;
             private readonly ObservableDeploymentsClient _client;
+<<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
             private const string owner = "owner";
             private const string name = "name";
+=======
+>>>>>>> ObservableDeploymentsClientTests were updated
 
             public TheGetAllMethod()
             {
@@ -27,9 +30,15 @@ namespace Octokit.Tests.Reactive
             [Fact]
             public void EnsuresNonNullArguments()
             {
+<<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 Assert.Throws<ArgumentNullException>(() => _client.GetAll(null, name));
                 Assert.Throws<ArgumentNullException>(() => _client.GetAll(owner, null));
                 Assert.Throws<ArgumentNullException>(() => _client.GetAll(owner, name, null));
+=======
+                Assert.Throws<ArgumentNullException>(() => _client.GetAll(null, "repo"));
+                Assert.Throws<ArgumentNullException>(() => _client.GetAll("owner", null));
+                Assert.Throws<ArgumentNullException>(() => _client.GetAll("owner", "repo", null));
+>>>>>>> ObservableDeploymentsClientTests were updated
             }
 
             [Fact]
@@ -53,19 +62,32 @@ namespace Octokit.Tests.Reactive
             {
                 var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
 
+<<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 _client.GetAll(owner, name);
                 _githubClient.Connection.Received(1)
                     .Get<List<Deployment>>(Arg.Is<Uri>(u => u.ToString() == expectedUrl),
                         Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 0), 
                         Arg.Any<string>());
+=======
+                _client.GetAll("owner", "repo");
+                _githubClient.Connection
+                             .Received(1)
+                             .Get<List<Deployment>>(Arg.Is(expectedUri),
+                                                         Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 0), Arg.Any<string>());
+>>>>>>> ObservableDeploymentsClientTests were updated
             }
 
             [Fact]
             public void RequestsCorrectUrlWithApiOptions()
             {
+<<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
 
                 // all properties are setted => only 2 options (StartPage, PageSize) in dictionary
+=======
+                var expectedUri = ApiUrls.Deployments("owner", "repo");
+                
+>>>>>>> ObservableDeploymentsClientTests were updated
                 var options = new ApiOptions
                 {
                     StartPage = 1,
@@ -73,6 +95,7 @@ namespace Octokit.Tests.Reactive
                     PageSize = 1
                 };
 
+<<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 _client.GetAll(owner, name, options);
                 _githubClient.Connection.Received(1)
                     .Get<List<Deployment>>(Arg.Is<Uri>(u => u.ToString() == expectedUrl),
@@ -102,6 +125,13 @@ namespace Octokit.Tests.Reactive
                     .Get<List<Deployment>>(Arg.Is<Uri>(u => u.ToString() == expectedUrl),
                         Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 0),
                         null);
+=======
+                _client.GetAll("owner", "repo", options);
+                _githubClient.Connection
+                             .Received(1)
+                             .Get<List<Deployment>>(Arg.Is(expectedUri),
+                                                         Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 3), Arg.Any<string>());
+>>>>>>> ObservableDeploymentsClientTests were updated
             }
         }
 
