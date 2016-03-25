@@ -34,9 +34,12 @@ namespace Octokit
         /// <returns>All the <see cref="Deployment"/>s for the specified repository.</returns>
         public Task<IReadOnlyList<Deployment>> GetAll(string owner, string name)
         {
+<<<<<<< d3ba37b4b7123ae895f72a7eb41b6e57221c02b8
             Ensure.ArgumentNotNullOrEmptyString(owner, "owner");
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
 
+=======
+>>>>>>> Method GetAll(string owner, string name, ApiOptions options) was implemented.
             return GetAll(owner, name, ApiOptions.None);
         }
 
@@ -53,7 +56,11 @@ namespace Octokit
         /// <returns>All the <see cref="Deployment"/>s for the specified repository.</returns>
         public Task<IReadOnlyList<Deployment>> GetAll(string owner, string name, ApiOptions options)
         {
+<<<<<<< d3ba37b4b7123ae895f72a7eb41b6e57221c02b8
             Ensure.ArgumentNotNullOrEmptyString(owner, "owner");
+=======
+            Ensure.ArgumentNotNullOrEmptyString(owner, "login");
+>>>>>>> Method GetAll(string owner, string name, ApiOptions options) was implemented.
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
             Ensure.ArgumentNotNull(options, "options");
 
