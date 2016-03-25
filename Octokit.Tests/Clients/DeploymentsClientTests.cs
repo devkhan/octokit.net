@@ -86,7 +86,8 @@ public class DeploymentsClientTests
 >>>>>>> Small fixes in DeploymentsClientTests
 
             client.GetAll(owner, name);
-            connection.Received(1).GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), Args.ApiOptions);
+            connection.Received(1)
+                .GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), Args.ApiOptions);
         }
 
 >>>>>>> DeploymentsClientTests were updated
@@ -112,6 +113,7 @@ public class DeploymentsClientTests
                 StartPage = 1
             };
 
+<<<<<<< HEAD
 <<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
             client.GetAll(owner, name, options);
@@ -124,6 +126,11 @@ public class DeploymentsClientTests
 >>>>>>> Small fixes in DeploymentsClientTests
             connection.Received(1).GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), options);
 >>>>>>> DeploymentsClientTests were updated
+=======
+            client.GetAll(owner, name, options);
+            connection.Received(1)
+                .GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), options);
+>>>>>>> Fix red test.
         }
     }
 
