@@ -15,11 +15,16 @@ namespace Octokit.Tests.Reactive
         {
             private readonly IGitHubClient _githubClient;
             private readonly ObservableDeploymentsClient _client;
+<<<<<<< ccf54075ba4dc64ea6fc9d1d969cc5c91d15af2d
 <<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
             private const string owner = "owner";
             private const string name = "name";
 =======
 >>>>>>> ObservableDeploymentsClientTests were updated
+=======
+            private const string owner = "owner";
+            private const string name = "name";
+>>>>>>> Some small refactorings in ObservableDeploymentsClientTests.
 
             public TheGetAllMethod()
             {
@@ -54,6 +59,7 @@ namespace Octokit.Tests.Reactive
             [Fact]
             public void RequestsCorrectUrl()
             {
+<<<<<<< ccf54075ba4dc64ea6fc9d1d969cc5c91d15af2d
                 var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
 
 <<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
@@ -64,6 +70,11 @@ namespace Octokit.Tests.Reactive
                         Arg.Any<string>());
 =======
                 _client.GetAll("owner", "repo");
+=======
+                var expectedUri = ApiUrls.Deployments(owner, name);
+
+                _client.GetAll(owner, name);
+>>>>>>> Some small refactorings in ObservableDeploymentsClientTests.
                 _githubClient.Connection
                              .Received(1)
                              .Get<List<Deployment>>(Arg.Is(expectedUri),
@@ -74,12 +85,16 @@ namespace Octokit.Tests.Reactive
             [Fact]
             public void RequestsCorrectUrlWithApiOptions()
             {
+<<<<<<< ccf54075ba4dc64ea6fc9d1d969cc5c91d15af2d
 <<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
 
                 // all properties are setted => only 2 options (StartPage, PageSize) in dictionary
 =======
                 var expectedUri = ApiUrls.Deployments("owner", "repo");
+=======
+                var expectedUri = ApiUrls.Deployments(owner, name);
+>>>>>>> Some small refactorings in ObservableDeploymentsClientTests.
                 
 >>>>>>> ObservableDeploymentsClientTests were updated
                 var options = new ApiOptions
@@ -89,6 +104,7 @@ namespace Octokit.Tests.Reactive
                     PageSize = 1
                 };
 
+<<<<<<< ccf54075ba4dc64ea6fc9d1d969cc5c91d15af2d
 <<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 _client.GetAll(owner, name, options);
                 _githubClient.Connection.Received(1)
@@ -121,6 +137,9 @@ namespace Octokit.Tests.Reactive
                         null);
 =======
                 _client.GetAll("owner", "repo", options);
+=======
+                _client.GetAll(owner, name, options);
+>>>>>>> Some small refactorings in ObservableDeploymentsClientTests.
                 _githubClient.Connection
                              .Received(1)
                              .Get<List<Deployment>>(Arg.Is(expectedUri),
