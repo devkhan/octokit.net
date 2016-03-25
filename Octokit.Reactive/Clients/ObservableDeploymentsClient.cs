@@ -31,6 +31,7 @@ namespace Octokit.Reactive.Clients
         /// <returns>All the <see cref="Deployment"/>s for the specified repository.</returns>
         public IObservable<Deployment> GetAll(string owner, string name)
         {
+<<<<<<< 3d5f211dbb2f09c10e1d8e385b471abd3da32ee3
             Ensure.ArgumentNotNullOrEmptyString(owner, "owner");
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
 
@@ -56,6 +57,9 @@ namespace Octokit.Reactive.Clients
 
             return _connection.GetAndFlattenAllPages<Deployment>(
                 ApiUrls.Deployments(owner, name), options);
+=======
+            return GetAll(owner, name, ApiOptions.None);
+>>>>>>> Some additional fixes for ObservableDeploymentsClient.
         }
 
         /// <summary>
