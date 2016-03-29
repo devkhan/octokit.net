@@ -482,10 +482,13 @@ namespace Octokit
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Elixir")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Elixir")]
         Elixir,
+<<<<<<< HEAD
         [Obsolete("This item is incorrect and will be removed in a future update. Use Elixir instead.")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Elixer")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Elixer")]
         Elixer,
+=======
+>>>>>>> SearchRepositoriesRequest fixes
         Elm,
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Emacs")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Emacs")]
@@ -716,10 +719,13 @@ namespace Octokit
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Parallel")]
         [Parameter(Value = "Unified Parallel C")]
         UnifiedParallelC,
+<<<<<<< HEAD
         [Obsolete("This item is incorrect and will be removed in a future update. Use UnifiedParallelC instead.")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Paralel")]
         [Parameter(Value = "Unified Paralel C")]
         UnifiedParalelC,
+=======
+>>>>>>> SearchRepositoriesRequest fixes
         Unknown,
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Vala")]
         Vala,
