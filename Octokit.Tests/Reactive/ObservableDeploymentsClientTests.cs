@@ -59,6 +59,7 @@ namespace Octokit.Tests.Reactive
             [Fact]
             public void RequestsCorrectUrl()
             {
+<<<<<<< HEAD
 <<<<<<< ccf54075ba4dc64ea6fc9d1d969cc5c91d15af2d
                 var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
 
@@ -80,11 +81,21 @@ namespace Octokit.Tests.Reactive
                              .Get<List<Deployment>>(Arg.Is(expectedUri),
                                                          Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 0), Arg.Any<string>());
 >>>>>>> ObservableDeploymentsClientTests were updated
+=======
+                var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
+
+                _client.GetAll(owner, name);
+                _githubClient.Connection.Received(1)
+                    .Get<List<Deployment>>(Arg.Is<Uri>(u => u.ToString() == expectedUrl),
+                        Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 0), 
+                        Arg.Any<string>());
+>>>>>>> All remarks were fixed
             }
 
             [Fact]
             public void RequestsCorrectUrlWithApiOptions()
             {
+<<<<<<< HEAD
 <<<<<<< ccf54075ba4dc64ea6fc9d1d969cc5c91d15af2d
 <<<<<<< 66289c55669da4f1d2f3e7284035dbf5eebd6b52
                 var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
@@ -101,6 +112,11 @@ namespace Octokit.Tests.Reactive
 =======
                 // all properties are setted => only 2 options (StartPage, PageSize) in Dictionary
 >>>>>>> In order to test ApiOptions we should check count of recived parameters. Fixed.
+=======
+                var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
+
+                // all properties are setted => only 2 options (StartPage, PageSize) in dictionary
+>>>>>>> All remarks were fixed
                 var options = new ApiOptions
                 {
                     StartPage = 1,
@@ -115,6 +131,7 @@ namespace Octokit.Tests.Reactive
                     .Get<List<Deployment>>(Arg.Is<Uri>(u => u.ToString() == expectedUrl),
                         Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 2),
                         null);
+<<<<<<< HEAD
 
                 // StartPage is setted => only 1 option (StartPage) in dictionary
                 options = new ApiOptions
@@ -152,31 +169,40 @@ namespace Octokit.Tests.Reactive
 >>>>>>> ObservableDeploymentsClientTests were updated
 =======
                                                          Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 2), null);
+=======
+>>>>>>> All remarks were fixed
 
-                // StartPage is setted => only 1 option (StartPage) in Dictionary
+                // StartPage is setted => only 1 option (StartPage) in dictionary
                 options = new ApiOptions
                 {
                     StartPage = 1
                 };
 
                 _client.GetAll(owner, name, options);
-                _githubClient.Connection
-                             .Received(1)
-                             .Get<List<Deployment>>(Arg.Is(expectedUri),
-                                                         Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 1), null);
+                _githubClient.Connection.Received(1)
+                    .Get<List<Deployment>>(Arg.Is<Uri>(u => u.ToString() == expectedUrl),
+                        Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 1),
+                        null);
 
-                // PageCount is setted => none of options in Dictionary
+                // PageCount is setted => none of options in dictionary
                 options = new ApiOptions
                 {
                     PageCount = 1
                 };
 
                 _client.GetAll(owner, name, options);
+<<<<<<< HEAD
                 _githubClient.Connection
                              .Received(1)
                              .Get<List<Deployment>>(Arg.Is(expectedUri),
                                                          Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 0), null);
 >>>>>>> In order to test ApiOptions we should check count of recived parameters. Fixed.
+=======
+                _githubClient.Connection.Received(1)
+                    .Get<List<Deployment>>(Arg.Is<Uri>(u => u.ToString() == expectedUrl),
+                        Arg.Is<IDictionary<string, string>>(dictionary => dictionary.Count == 0),
+                        null);
+>>>>>>> All remarks were fixed
             }
         }
 

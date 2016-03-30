@@ -70,6 +70,7 @@ public class DeploymentsClientTests
         {
             var connection = Substitute.For<IApiConnection>();
             var client = new DeploymentsClient(connection);
+<<<<<<< HEAD
 <<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
             var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
@@ -84,10 +85,13 @@ public class DeploymentsClientTests
 =======
             var expectedUrl = ApiUrls.Deployments(owner, name);
 >>>>>>> Small fixes in DeploymentsClientTests
+=======
+            var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
+>>>>>>> All remarks were fixed
 
             client.GetAll(owner, name);
             connection.Received(1)
-                .GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), Args.ApiOptions);
+                .GetAll<Deployment>(Arg.Is<Uri>(u => u.ToString() == expectedUrl), Args.ApiOptions);
         }
 
 >>>>>>> DeploymentsClientTests were updated
@@ -96,6 +100,7 @@ public class DeploymentsClientTests
         {
             var connection = Substitute.For<IApiConnection>();
             var client = new DeploymentsClient(connection);
+<<<<<<< HEAD
 <<<<<<< d2cc926af9c6b4210d0d46b5bfafd4e086d6d14b
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
             var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
@@ -105,6 +110,9 @@ public class DeploymentsClientTests
 =======
             var expectedUrl = ApiUrls.Deployments(owner, name);
 >>>>>>> Small fixes in DeploymentsClientTests
+=======
+            var expectedUrl = string.Format("repos/{0}/{1}/deployments", owner, name);
+>>>>>>> All remarks were fixed
 
             var options = new ApiOptions
             {
@@ -129,26 +137,34 @@ public class DeploymentsClientTests
 =======
             client.GetAll(owner, name, options);
             connection.Received(1)
+<<<<<<< HEAD
                 .GetAll<Deployment>(Arg.Is<Uri>(u => u == expectedUrl), options);
 >>>>>>> Fix red test.
+=======
+                .GetAll<Deployment>(Arg.Is<Uri>(u => u.ToString() == expectedUrl), options);
+>>>>>>> All remarks were fixed
         }
     }
 
     public class TheCreateMethod
     {
+<<<<<<< HEAD
 <<<<<<< 59c85110382ba173b2914239fb07badff276c505
         private readonly NewDeployment newDeployment = new NewDeployment("aRef");
 =======
         private readonly NewDeployment _newDeployment = new NewDeployment("aRef");
 >>>>>>> DeploymentsClientTests were updated
+=======
+        private readonly NewDeployment newDeployment = new NewDeployment("aRef");
+>>>>>>> All remarks were fixed
 
         [Fact]
         public async Task EnsuresNonNullArguments()
         {
             var client = new DeploymentsClient(Substitute.For<IApiConnection>());
 
-            await Assert.ThrowsAsync<ArgumentNullException>(() => client.Create(null, "name", _newDeployment));
-            await Assert.ThrowsAsync<ArgumentNullException>(() => client.Create("owner", null, _newDeployment));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => client.Create(null, "name", newDeployment));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => client.Create("owner", null, newDeployment));
             await Assert.ThrowsAsync<ArgumentNullException>(() => client.Create("owner", "name", null));
         }
 
@@ -157,8 +173,8 @@ public class DeploymentsClientTests
         {
             var client = new DeploymentsClient(Substitute.For<IApiConnection>());
 
-            await Assert.ThrowsAsync<ArgumentException>(() => client.Create("", "name", _newDeployment));
-            await Assert.ThrowsAsync<ArgumentException>(() => client.Create("owner", "", _newDeployment));
+            await Assert.ThrowsAsync<ArgumentException>(() => client.Create("", "name", newDeployment));
+            await Assert.ThrowsAsync<ArgumentException>(() => client.Create("owner", "", newDeployment));
         }
 
         [Theory]
@@ -171,8 +187,8 @@ public class DeploymentsClientTests
         {
             var client = new DeploymentsClient(Substitute.For<IApiConnection>());
 
-            await Assert.ThrowsAsync<ArgumentException>(() => client.Create(whitespace, "name", _newDeployment));
-            await Assert.ThrowsAsync<ArgumentException>(() => client.Create("owner", whitespace, _newDeployment));
+            await Assert.ThrowsAsync<ArgumentException>(() => client.Create(whitespace, "name", newDeployment));
+            await Assert.ThrowsAsync<ArgumentException>(() => client.Create("owner", whitespace, newDeployment));
         }
 
         [Fact]
@@ -182,7 +198,7 @@ public class DeploymentsClientTests
             var client = new DeploymentsClient(connection);
             var expectedUrl = ApiUrls.Deployments("owner", "name");
 
-            client.Create("owner", "name", _newDeployment);
+            client.Create("owner", "name", newDeployment);
 
             connection.Received(1).Post<Deployment>(Arg.Is<Uri>(u => u == expectedUrl),
                                                     Arg.Any<NewDeployment>());
@@ -194,10 +210,10 @@ public class DeploymentsClientTests
             var connection = Substitute.For<IApiConnection>();
             var client = new DeploymentsClient(connection);
 
-            client.Create("owner", "name", _newDeployment);
+            client.Create("owner", "name", newDeployment);
 
             connection.Received(1).Post<Deployment>(Arg.Any<Uri>(),
-                                                    _newDeployment);
+                                                    newDeployment);
         }
     }
 
