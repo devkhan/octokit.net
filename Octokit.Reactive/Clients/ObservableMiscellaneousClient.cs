@@ -10,10 +10,14 @@ namespace Octokit.Reactive
         readonly IMiscellaneousClient _client;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         [Obsolete("Please use the IGitHubClient overload constructor")]
 =======
         [Obsolete("Please use another constructor")]
 >>>>>>> Add unit test for ObservableMiscellaneousClient
+=======
+        [Obsolete("Please use the IGitHubClient overload constructor")]
+>>>>>>> Reword obsolete message
         public ObservableMiscellaneousClient(IMiscellaneousClient client)
         {
             Ensure.ArgumentNotNull(client, "client");
