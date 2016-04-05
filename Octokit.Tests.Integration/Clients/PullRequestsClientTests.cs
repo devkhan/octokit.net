@@ -230,6 +230,7 @@ public class PullRequestsClientTests : IDisposable
     {
         await CreateTheWorld();
 
+<<<<<<< HEAD
         var newPullRequest = new NewPullRequest("squash commit pull request", branchName, "master");
         var pullRequest = await _fixture.Create(Helper.UserName, _context.RepositoryName, newPullRequest);
 
@@ -238,6 +239,14 @@ public class PullRequestsClientTests : IDisposable
         var commit = await _github.Repository.Commit.Get(_context.RepositoryOwner, _context.RepositoryName, result.Sha);
 
         Assert.Equal("fake commit message", commit.Commit.Message);
+=======
+        var newPullRequest = new NewPullRequest("a pull request", branchName, "master");
+        var pullRequest = await _fixture.Create(Helper.UserName, _context.RepositoryName, newPullRequest);
+
+        var merge = new MergePullRequest { CommitMessage = "fake message", CommitTitle = "fake title", Squash = true };
+        var result = await _fixture.Merge(Helper.UserName, _context.RepositoryName, pullRequest.Number, merge);
+
+>>>>>>> Pull-Request-Squash-Commit
         Assert.True(result.Merged);
     }
 
