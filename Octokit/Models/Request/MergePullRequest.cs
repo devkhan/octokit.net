@@ -37,10 +37,14 @@ namespace Octokit
             get
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return string.Format(CultureInfo.InvariantCulture, "Title: '{0}'  Message: '{1}', Sha: '{2}' , Squash: '{3}'", CommitTitle, CommitMessage, Sha, Squash);
 =======
                 return string.Format(CultureInfo.InvariantCulture, "Title: '{0}'  Message: '{1}', Sha: '{2}' , Squash: '{3}'" , CommitTitle, CommitMessage, Sha ,Squash);
 >>>>>>> Pull-Request-Squash-Commit
+=======
+                return string.Format(CultureInfo.InvariantCulture, "Title: '{0}'  Message: '{1}', Sha: '{2}' , Squash: '{3}'", CommitTitle, CommitMessage, Sha, Squash);
+>>>>>>> revert incorrect change
             }
         }
     }
