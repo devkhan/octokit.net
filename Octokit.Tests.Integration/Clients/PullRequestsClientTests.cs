@@ -210,6 +210,7 @@ public class PullRequestsClientTests : IDisposable
 
         Assert.True(result.Merged);
     }
+
     [IntegrationTest]
     public async Task CanBeMergedWithShaSpecified()
     {
@@ -219,6 +220,20 @@ public class PullRequestsClientTests : IDisposable
         var pullRequest = await _fixture.Create(Helper.UserName, _context.RepositoryName, newPullRequest);
 
         var merge = new MergePullRequest { CommitMessage = "thing the thing", Sha = pullRequest.Head.Sha };
+        var result = await _fixture.Merge(Helper.UserName, _context.RepositoryName, pullRequest.Number, merge);
+
+        Assert.True(result.Merged);
+    }
+
+    [IntegrationTest]
+    public async Task CanBeMergedWithSquashCommit()
+    {
+        await CreateTheWorld();
+
+        var newPullRequest = new NewPullRequest("a pull request", branchName, "master");
+        var pullRequest = await _fixture.Create(Helper.UserName, _context.RepositoryName, newPullRequest);
+
+        var merge = new MergePullRequest { CommitMessage = "fake message", CommitTitle = "fake title", Squash = true };
         var result = await _fixture.Merge(Helper.UserName, _context.RepositoryName, pullRequest.Number, merge);
 
         Assert.True(result.Merged);

@@ -13,6 +13,16 @@ namespace Octokit
     public class MergePullRequest
     {
         /// <summary>
+        /// The title that will be used for the automatic commit message (optional)
+        /// </summary>
+        public string CommitTitle { get; set; }
+
+        /// <summary>
+        /// Commit a single commit to the head branch (optional)
+        /// </summary>
+        public bool Squash { get; set; }
+
+        /// <summary>
         /// The message that will be used for the merge commit (optional)
         /// </summary>
         public string CommitMessage { get; set; }
@@ -26,7 +36,7 @@ namespace Octokit
         {
             get
             {
-                return string.Format(CultureInfo.InvariantCulture, "Message: '{0}', Sha: '{1}'", CommitMessage, Sha);
+                return string.Format(CultureInfo.InvariantCulture, "Title: '{0}'  Message: '{1}', Sha: '{2}' , Squash: '{3}'" , CommitTitle, CommitMessage, Sha ,Squash);
             }
         }
     }
