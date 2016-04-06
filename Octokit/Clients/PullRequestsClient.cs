@@ -118,8 +118,7 @@ namespace Octokit
 
             try
             {
-                var endpoint = ApiUrls.MergePullRequest(owner, name, number);
-                return await ApiConnection.Put<PullRequestMerge>(endpoint, mergePullRequest).ConfigureAwait(false);
+                return await ApiConnection.Put<PullRequestMerge>(ApiUrls.MergePullRequest(owner, name, number), mergePullRequest, null, AcceptHeaders.SquashCommitPreview);
             }
             catch (ApiException ex)
             {
