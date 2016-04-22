@@ -4,9 +4,15 @@ sudo: false  # use the new container-based Travis infrastructure
 os:
   - osx
   - linux
+  
 install:
   - nuget restore Octokit-Mono.sln 
+  - pip install codecov
+
 script: 
   - mono tools/nuget/NuGet.exe restore Octokit-Mono.sln
   - ./build.sh BuildMono 
-  - ./build.sh 
+  - ./build.sh
+  
+after_success:
+  - codecov
