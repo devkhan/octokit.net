@@ -7,7 +7,6 @@ os:
   
 install:
   - nuget restore Octokit-Mono.sln 
-  - pip install codecov
 
 script: 
   - mono tools/nuget/NuGet.exe restore Octokit-Mono.sln
